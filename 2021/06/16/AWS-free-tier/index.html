@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>AWS free tier 사용법 - qsoo&#039;s blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="qsoo&#039;s blog"><meta name="msapplication-TileImage" content="/img/favicon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="qsoo&#039;s blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="진행했던 팀 프로젝트의 AWS EC2 사용기간이 만료되어 직접 프리티어로 설정을 하고 데모 버젼을 띄우기 위해 작성했습니다AWS free tier는 첫 가입일 기준 12개월 무료로 사용 가능(제한적 용량이지만 누군가에게는 충분한 사용량!)    1. 계정 생성하기AWS 홈페이지 회원가입시 - 카드 정보, 전화번호 인증 필요 AWS 홈페이지에서 우상단의 회"><meta property="og:type" content="blog"><meta property="og:title" content="AWS free tier 사용법"><meta property="og:url" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/"><meta property="og:site_name" content="qsoo&#039;s blog"><meta property="og:description" content="진행했던 팀 프로젝트의 AWS EC2 사용기간이 만료되어 직접 프리티어로 설정을 하고 데모 버젼을 띄우기 위해 작성했습니다AWS free tier는 첫 가입일 기준 12개월 무료로 사용 가능(제한적 용량이지만 누군가에게는 충분한 사용량!)    1. 계정 생성하기AWS 홈페이지 회원가입시 - 카드 정보, 전화번호 인증 필요 AWS 홈페이지에서 우상단의 회"><meta property="og:locale" content="ko_KR"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/2-2.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/2-3.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/2-5.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/2-7.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/2-9.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/3.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/4.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/5-2.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/6-1.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/6-2.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/6-4.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/6-5.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/6-6.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/6-7.png"><meta property="og:image" content="https://qsoo.github.io/2021/06/16/AWS-free-tier/6-8.png"><meta property="article:published_time" content="2021-06-16T10:15:21.000Z"><meta property="article:modified_time" content="2021-06-16T16:11:10.756Z"><meta property="article:author" content="qsoo"><meta property="article:tag" content="AWS"><meta property="article:tag" content="deploy"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/2021/06/16/AWS-free-tier/2-2.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://qsoo.github.io/2021/06/16/AWS-free-tier/"},"headline":"qsoo's blog","image":["https://qsoo.github.io/2021/06/16/AWS-free-tier/2-2.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/2-3.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/2-5.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/2-7.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/2-9.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/3.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/4.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/5-2.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/6-1.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/6-2.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/6-4.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/6-5.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/6-6.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/6-7.png","https://qsoo.github.io/2021/06/16/AWS-free-tier/6-8.png"],"datePublished":"2021-06-16T10:15:21.000Z","dateModified":"2021-06-16T16:11:10.756Z","author":{"@type":"Person","name":"qsoo"},"description":"진행했던 팀 프로젝트의 AWS EC2 사용기간이 만료되어 직접 프리티어로 설정을 하고 데모 버젼을 띄우기 위해 작성했습니다AWS free tier는 첫 가입일 기준 12개월 무료로 사용 가능(제한적 용량이지만 누군가에게는 충분한 사용량!)    1. 계정 생성하기AWS 홈페이지 회원가입시 - 카드 정보, 전화번호 인증 필요 AWS 홈페이지에서 우상단의 회"}</script><link rel="canonical" href="https://qsoo.github.io/2021/06/16/AWS-free-tier/"><link rel="icon" href="/img/favicon.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 5.4.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.png" alt="qsoo&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-06-16T10:15:21.000Z" title="2021-06-16T10:15:21.000Z">2021-06-16</time>&nbsp;게시 됨</span><span class="level-item"><time dateTime="2021-06-16T16:11:10.756Z" title="2021-06-16T16:11:10.756Z">2021-06-17</time>&nbsp;업데이트 됨</span><span class="level-item"><a class="link-muted" href="/categories/AWS/">AWS</a></span></div></div><h1 class="title is-3 is-size-4-mobile">AWS free tier 사용법</h1><div class="content"><blockquote>
+<p>진행했던 팀 프로젝트의 AWS EC2 사용기간이 만료되어 직접 프리티어로 설정을 하고 데모 버젼을 띄우기 위해 작성했습니다<br>AWS free tier는 첫 가입일 기준 12개월 무료로 사용 가능(제한적 용량이지만 누군가에게는 충분한 사용량!)</p>
+</blockquote>
+<br>
+
+<h3 id="1-계정-생성하기"><a href="#1-계정-생성하기" class="headerlink" title="1. 계정 생성하기"></a>1. 계정 생성하기</h3><p><a target="_blank" rel="noopener" href="https://aws.amazon.com/ko/">AWS 홈페이지</a></p>
+<p><strong>회원가입시 - 카드 정보, 전화번호 인증 필요</strong></p>
+<p>AWS 홈페이지에서 우상단의 회원가입 버튼을 누르고 안내에 따라 입력하면 회원가입 가능</p>
+<p>(모바일 인증 등의 과정이 여기서 필요)</p>
+<br>
+
+<h3 id="2-인스턴스-생성"><a href="#2-인스턴스-생성" class="headerlink" title="2. 인스턴스 생성"></a>2. 인스턴스 생성</h3><blockquote>
+<p>인스턴스는 가상 서버를 의미한다</p>
+</blockquote>
+<br>
+
+<h4 id="2-1-지역-선택"><a href="#2-1-지역-선택" class="headerlink" title="2-1. 지역 선택"></a>2-1. 지역 선택</h4><blockquote>
+<p>아마존 웹 서비스의 서버의 위치 결정(서버의 위치와 서비스 대상의 위치가 가까울수록 속도가 빠르다)</p>
+<p>단, 지역별로 가격이 다르기 떄문에 살펴볼 필요가 있음</p>
+</blockquote>
+<br>
+
+<h4 id="2-2-AMI-선택"><a href="#2-2-AMI-선택" class="headerlink" title="2-2. AMI 선택"></a>2-2. AMI 선택</h4><blockquote>
+<p>Amazon Machine Image는 인스턴스를 시작하는데 필요한 SW 구성 템플릿<br>즉, 컴퓨터 운영체제를 설치하는 것과 비슷하다고 이해하면 될 것 같다</p>
+</blockquote>
+<p>해당 부분에서 프리티어 등급이 사용 가능한 AMI인지 확인하고 필요한 AMI를 설치하기</p>
+<img src="/2021/06/16/AWS-free-tier/2-2.png" class="" title="choose AMI">  
+
+<p><br><br></p>
+<h4 id="2-3-인스턴스-유형-선택"><a href="#2-3-인스턴스-유형-선택" class="headerlink" title="2-3. 인스턴스 유형 선택"></a>2-3. 인스턴스 유형 선택</h4><img src="/2021/06/16/AWS-free-tier/2-3.png" class="" title="choose Instance type">
+
+<p><br><br></p>
+<h4 id="2-4-인스턴스-세부정보-구성"><a href="#2-4-인스턴스-세부정보-구성" class="headerlink" title="2-4. 인스턴스 세부정보 구성"></a>2-4. 인스턴스 세부정보 구성</h4><blockquote>
+<p>필요한 부분에 대해 수정을 통해 변경하기</p>
+</blockquote>
+<p>가장 기본인 default 설정 그대로 진행</p>
+<br>
+
+<h4 id="2-5-스토리지-추가"><a href="#2-5-스토리지-추가" class="headerlink" title="2-5. 스토리지 추가"></a>2-5. 스토리지 추가</h4><img src="/2021/06/16/AWS-free-tier/2-5.png" class="" title="Add storage">
+
+<p><br><br></p>
+<h4 id="2-6-태그-추가"><a href="#2-6-태그-추가" class="headerlink" title="2-6. 태그 추가"></a>2-6. 태그 추가</h4><blockquote>
+<p>인스턴스 관리를 위한 태그를 지정가능 </p>
+<p><code>키-값</code>으로 구성</p>
+<p>구분을 위해 기본 태그(Name 등)는 구성해주면 편리</p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/Using_Tags.html">참고 - 태그 사용 가이드</a></p>
+</blockquote>
+<br>
+
+<h4 id="2-7-보안-그룹-구성"><a href="#2-7-보안-그룹-구성" class="headerlink" title="2-7. 보안 그룹 구성"></a>2-7. 보안 그룹 구성</h4><blockquote>
+<p>일반 사용자 접근 HTTP(S)는 IP 위치 무관으로 설정하고 보안을 위해 22번 포트는 내 IP로 설정</p>
+<p>프론트엔드 포트 번호도 열어주게 설정</p>
+</blockquote>
+<ul>
+<li><p><strong>시큐어 셸</strong>(Secure SHell, <strong>SSH</strong>)은 네트워크 상의 다른 컴퓨터에 로그인하거나 원격 시스템에서 명령을 실행하고 다른 시스템으로 파일을 복사할 수 있도록 해 주는 응용 프로그램 또는 그 프로토콜을 가리킨다. 기존의 rsh, rlogin, 텔넷 등을 대체하기 위해 설계되었으며, 강력한 인증 방법 및 안전하지 못한 네트워크에서 안전하게 통신을 할 수 있는 기능을 제공한다. 기본적으로는 22번 포트를 사용한다.</p>
+<p><a target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/%EC%8B%9C%ED%81%90%EC%96%B4_%EC%85%B8">출처: 나무위키</a></p>
+</li>
+</ul>
+<br>
+
+<img src="/2021/06/16/AWS-free-tier/2-7.png" class="" title="Build security group">
+
+<p><br><br></p>
+<h4 id="2-8-인스턴스-시작-검토"><a href="#2-8-인스턴스-시작-검토" class="headerlink" title="2-8. 인스턴스 시작 검토"></a>2-8. 인스턴스 시작 검토</h4><blockquote>
+<p>기존에 설정한 항목들을 확인한 다음 시작하기 버튼 클릭</p>
+</blockquote>
+<br>
+
+<h4 id="2-9-키페어-생성"><a href="#2-9-키페어-생성" class="headerlink" title="2-9. 키페어 생성"></a>2-9. 키페어 생성</h4><blockquote>
+<p>키페어를 생성을 통해 만들어진 <code>.pem</code>파일 보관</p>
+</blockquote>
+<h4 id="해당-pem-파일은-재다운로드가-어렵기-때문에-잘-보관하기"><a href="#해당-pem-파일은-재다운로드가-어렵기-때문에-잘-보관하기" class="headerlink" title="해당 .pem 파일은 재다운로드가 어렵기 때문에 잘 보관하기"></a><strong>해당 <code>.pem</code> 파일은 재다운로드가 어렵기 때문에 잘 보관하기</strong></h4><br>
+
+<img src="/2021/06/16/AWS-free-tier/2-9.png" class="" title="Generate key pair">
+
+<p><br><br></p>
+<h4 id="2-10-인스턴스-생성-완료"><a href="#2-10-인스턴스-생성-완료" class="headerlink" title="2-10. 인스턴스 생성 완료"></a>2-10. 인스턴스 생성 완료</h4><blockquote>
+<p>인스턴스 보기를 통해 인스턴스가 작동중인 모습을 확인할 수 있음</p>
+</blockquote>
+<br>
+
+<h3 id="3-탄력적-IP-주소-사용"><a href="#3-탄력적-IP-주소-사용" class="headerlink" title="3. 탄력적 IP 주소 사용"></a>3. 탄력적 IP 주소 사용</h3><blockquote>
+<p>기본적으로 EC2 인스턴스를 생성해서 서버를 구동시키면 <strong>고정 IP가 아니다</strong></p>
+<p>탄력적 IP를 통해 고정 IP를 할당 받아서 사용할 필요가 있다</p>
+<p>그렇지 않으면 인스턴스를 중지하고 다시 실행시키면 IP가 변경된다!</p>
+</blockquote>
+<p><em>탄력적 IP는 만들어 놓고 사용하지 않으면 과금이 되기 때문에 필요한만큼 생성하여 바로 사용</em></p>
+<br>
+
+<p><strong>인스턴스에 연결되어 있더라도 인스턴스가 멈춰있으면 요금 청구</strong></p>
+<p>실행 중인 인스턴스에 연결된 IP주소 한 개는 무료로 사용</p>
+<br>
+
+<img src="/2021/06/16/AWS-free-tier/3.png" class="" title="EIP">
+
+<p><em>위의 그림에서 <code>작업 부분</code> 드롭 다운을 누르면 탄력적 IP 주소 릴리즈 버튼을 누르면 해당 EIP를 삭제할 수 있다!</em></p>
+<br>
+
+<h4 id="4-ssh-사용-연결"><a href="#4-ssh-사용-연결" class="headerlink" title="4. ssh 사용 연결"></a>4. ssh 사용 연결</h4><blockquote>
+<p>인스턴스 연결을 클릭하고 22번 포트 개방 여부 확인 후 주어진 스텝으로 진행</p>
+</blockquote>
+<img src="/2021/06/16/AWS-free-tier/4.png" class="" title="Connect ssh">
+
+<p><br><br></p>
+<h2 id="추가-사항-사용량-결제-알림-받기"><a href="#추가-사항-사용량-결제-알림-받기" class="headerlink" title="(추가 사항) 사용량 결제 알림 받기"></a>(추가 사항) 사용량 결제 알림 받기</h2><blockquote>
+<p>EC2를 사용하다 보면 커뮤니티에서 심심찮게 볼 수 있는 내용이 예상치 않은 과금으로 인해 고통 받는 사람들이었다. 걱정이 많은 나였기에 사용량 제한하는 방법을 찾아보고 제한은 없으나 알람을 받을 수 있는 방법까지 공유하려고 한다</p>
+</blockquote>
+<br>
+
+<h4 id="1-내-결제-대시보드-이동"><a href="#1-내-결제-대시보드-이동" class="headerlink" title="1. 내 결제 대시보드 이동"></a>1. 내 결제 대시보드 이동</h4><blockquote>
+<p>우상단의 내 계정 정보 드롭다운을 클릭하면 나오는 <code>내 결제 대시보드</code> 클릭</p>
+</blockquote>
+<br>
+
+<h4 id="2-결제-기본-정보-설정"><a href="#2-결제-기본-정보-설정" class="headerlink" title="2. 결제 기본 정보 설정"></a>2. 결제 기본 정보 설정</h4><img src="/2021/06/16/AWS-free-tier/5-2.png" class="" title="Billing info">
+
+<ol>
+<li>프리티어 사용량 알림 활성화를 통해 이메일로 사용량 확인 가능</li>
+<li>결제 알림을 통해 특정 기준에 따라 결제 알림을 받게 설정 가능</li>
+</ol>
+<br>
+
+<h3 id="추가-설정-요금-알람-받기"><a href="#추가-설정-요금-알람-받기" class="headerlink" title="(추가 설정) 요금 알람 받기"></a>(추가 설정) 요금 알람 받기</h3><blockquote>
+<p>해당 부분은 프리티어 이상의 요금을 사용할 때(example. 20$ 기준으로 설정하고 싶다!) 외에도 트래픽, API 사용량 등 점검하고 싶은 내용을 모두 체크할 수 있는 부분이지만 기본적인 요금 설정 방법을 작성하겠습니다. EC2의 경우 기본적인 프리 티어 한도 내에서 실행가능</p>
+</blockquote>
+<br>
+
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/monitoring/gs_monitor_estimated_charges_with_cloudwatch.html#gs_turning_on_billing_metrics">참고자료: AWS CloudWatch를 통한 예상 요금 모니터링</a></p>
+<blockquote>
+<p>위의 참고 자료를 보고 스텝을 따라가면 된다!</p>
+</blockquote>
+<br>
+
+<p><a target="_blank" rel="noopener" href="https://aws.amazon.com/ko/cloudwatch/pricing/">CloudWatch 요금 설명</a></p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://console.aws.amazon.com/cloudwatch/"><code>CloudWatch</code> console 실행</a></p>
+<img src="/2021/06/16/AWS-free-tier/6-1.png" class="" title="Execute cloudwatch">
+
+<p>결제 지표는 <code>버지니아 북부</code>에서 선택 가능(전 세계 요금 반영)</p>
+</li>
+</ol>
+<br>
+
+<ol start="2">
+<li><p>경보 &gt; 경보 생성 선택</p>
+<img src="/2021/06/16/AWS-free-tier/6-2.png" class="" title="Make alarm">
+
+</li>
+</ol>
+<p><br><br></p>
+<ol start="3">
+<li><p>지표 선택 &gt; 결제 &gt; 예상 요금 합계 선택</p>
+<blockquote>
+<p>해당 부분에서 결제 또는 예상 요금 지표가 활성화되지 않으면</p>
+<ol>
+<li><a href="#2.-%EA%B2%B0%EC%A0%9C-%EA%B8%B0%EB%B3%B8-%EC%A0%95%EB%B3%B4-%EC%84%A4%EC%A0%95">결제 경보 활성화 여부 확인</a></li>
+<li>지역 확인(버지니아 북부)</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<br>
+
+<ol start="4">
+<li><p>예상 요금 지표 활성화 &gt; 지표 선택</p>
+<img src="/2021/06/16/AWS-free-tier/6-4.png" class="" title="Select indicator">
+
+</li>
+</ol>
+<p><br><br></p>
+<ol start="5">
+<li><p>조건 설정(임계값)</p>
+<blockquote>
+<p>원하는 조건에 맞게 시간, 조건 등 설정</p>
+</blockquote>
+<img src="/2021/06/16/AWS-free-tier/6-5.png" class="" title="Set condition">
+
+<p><em>화면 예시는 20$ 이상일 때 알람 전송</em></p>
+</li>
+</ol>
+<p><br><br></p>
+<ol start="6">
+<li><p>알림을 추가하여 <code>알림 전송 대상</code> 선택</p>
+<img src="/2021/06/16/AWS-free-tier/6-6.png" class="" title="Set alarm target">
+
+</li>
+</ol>
+<p><br><br></p>
+<ol start="7">
+<li><p>이름 및 설명을 추가하고 알림 확인</p>
+<img src="/2021/06/16/AWS-free-tier/6-7.png" class="" title="Check alarm">
+
+</li>
+</ol>
+<p><br><br></p>
+<ol start="8">
+<li><p>구독 여부 확인해줘야 정상적으로 메시지 수신 가능(이메일로 확인)</p>
+<img src="/2021/06/16/AWS-free-tier/6-8.png" class="" title="Confirm subscribe">
+
+</li>
+</ol>
+<p><br><br></p>
+<h4 id="참고-자료"><a href="#참고-자료" class="headerlink" title="참고 자료"></a>참고 자료</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://velog.io/@hotoron/AWS-%EB%AC%B4%EB%A3%8C%EC%84%9C%EB%B2%84-%EC%82%AC%EC%9A%A9%EB%B2%95-%ED%94%84%EB%A6%AC%ED%8B%B0%EC%96%B4">호토론 블로그</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/ko_kr/AmazonCloudWatch/latest/monitoring/gs_monitor_estimated_charges_with_cloudwatch.html#gs_turning_on_billing_metrics">참고자료: AWS CloudWatch를 통한 예상 요금 모니터링</a></li>
+</ul>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/AWS/">AWS</a><a class="link-muted mr-2" rel="tag" href="/tags/deploy/">deploy</a></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/05/24/bigfile-transfer-using-git/"><span class="level-item">git 대용량 파일 올리기</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/profile.png" alt="qsoo"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">qsoo</p><p class="is-size-6 is-block">sustained excellence</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">포스트</p><a href="/archives"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">카테고리</p><a href="/categories"><p class="title">3</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">태그</p><a href="/tags"><p class="title">6</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/qsoo" target="_blank" rel="noopener">팔로우</a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">링크</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">카테고리</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/AWS/"><span class="level-start"><span class="level-item">AWS</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/git/"><span class="level-start"><span class="level-item">git</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/hexo/"><span class="level-start"><span class="level-item">hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">최근 글</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-06-16T10:15:21.000Z">2021-06-16</time></p><p class="title"><a href="/2021/06/16/AWS-free-tier/">AWS free tier 사용법</a></p><p class="categories"><a href="/categories/AWS/">AWS</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-05-24T10:05:37.000Z">2021-05-24</time></p><p class="title"><a href="/2021/05/24/bigfile-transfer-using-git/">git 대용량 파일 올리기</a></p><p class="categories"><a href="/categories/git/">git</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2021-01-01T11:37:06.000Z">2021-01-01</time></p><p class="title"><a href="/2021/01/01/Hexo-github-page-write/">Hexo로 github page 구축하기(2)</a></p><p class="categories"><a href="/categories/hexo/">hexo</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-12-20T11:37:06.000Z">2020-12-20</time></p><p class="title"><a href="/2020/12/20/Hexo-github-page-build/">Hexo로 github page 구축하기(1)</a></p><p class="categories"><a href="/categories/hexo/">hexo</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2020-12-01T10:05:37.000Z">2020-12-01</time></p><p class="title"><a href="/2020/12/01/git-basic-usecase/">git 기본 사용법</a></p><p class="categories"><a href="/categories/git/">git</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">아카이브</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2021/06/"><span class="level-start"><span class="level-item">6월 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/05/"><span class="level-start"><span class="level-item">5월 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/01/"><span class="level-start"><span class="level-item">1월 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/archives/2020/12/"><span class="level-start"><span class="level-item">12월 2020</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">태그</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AWS/"><span class="tag">AWS</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blog/"><span class="tag">blog</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/deploy/"><span class="tag">deploy</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/framework/"><span class="tag">framework</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/git/"><span class="tag">git</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hexo/"><span class="tag">hexo</span><span class="tag">2</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.png" alt="qsoo&#039;s blog" height="28"></a><p class="is-size-7"><span>&copy; 2021 qsoo</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/qsoo"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" async></script><script>moment.locale("ko");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="맨 위로" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "이 웹 사이트는 귀하의 경험을 향상시키기 위해 Cookie를 사용합니다.",
+          dismiss: "무시",
+          allow: "허용",
+          deny: "거부",
+          link: "더 알아보기",
+          policy: "Cookie 정책",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><!--!--></body></html>
